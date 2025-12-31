@@ -1,0 +1,65 @@
+https://www.geeksforgeeks.org/world-general-knowledge-questions/
+https://www.scoutingpolaris.nl/downloads/spellen/10.000vragen.pdf
+https://www.mentimeter.com/blog/meetings/quiz-questions
+https://ays-pro.com/blog/free-general-knowledge-questions
+https://ays-pro.com/blog/free-general-knowledge-questions
+
+
+
+
+code for random questions in quiz game 
+
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "quiz_game";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Fetch a random question
+$sql = "SELECT * FROM questions ORDER BY RAND() LIMIT 1"; // This fetches 1 random question
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // Output data of the random question
+    $row = $result->fetch_assoc();
+    $question = $row["question"];
+    $options = [
+        1 => $row["option_1"],
+        2 => $row["option_2"],
+        3 => $row["option_3"],
+        4 => $row["option_4"]
+    ];
+    $correct_option = $row["correct_option"];
+} else {
+    echo "No questions found.";
+}
+
+?>
+
+<form action="quiz.php" method="POST">
+    <p><?php echo $question; ?></p>
+    <?php foreach ($options as $key => $option): ?>
+        <input type="radio" name="answer" value="<?php echo $key; ?>"> <?php echo $option; ?><br>
+    <?php endforeach; ?>
+    <input type="submit" value="Submit">
+</form>
+
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $user_answer = $_POST['answer'];
+
+    if ($user_answer == $correct_option) {
+        echo "Correct Answer!";
+    } else {
+        echo "Wrong Answer. The correct answer is option " . $correct_option;
+    }
+}
+?>

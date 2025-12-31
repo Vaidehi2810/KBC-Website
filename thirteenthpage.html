@@ -1,0 +1,141 @@
+<html>
+    <head>
+       <title>Kaun Banega Crorepati</title>
+       <style>        
+        body{
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+                image-rendering: smooth;
+                padding-left: 2%;
+            }
+            h2{
+                border: 2px solid white;
+                color: white;
+                width: 51%;
+                border-radius: 49%;
+                height: 8%;
+                padding-top: 2%;
+                padding-left: 9%;
+                background-color: blue;
+                margin-top: 14%;
+                margin-left: 14%;
+            }
+            .op{
+                border: 1px solid white;
+                width: 35%;
+                border-radius: 47%;
+                height: 8%;
+                color: white;
+                background-color: blue;
+                font-size: x-large;
+            }
+            .sc{
+                border: 1px solid white;
+                width: 89%;
+                border-radius: 47%;
+                color: white;
+                background-color: blue;
+                font-size: x-large;
+                height: 6%;
+                margin-bottom: 2%;
+                padding-left: 31%;
+            }
+            .sco{
+                border: 1px solid white;
+                width: 89%;
+                border-radius: 47%;
+                color: white;
+                background-color: blue;
+                font-size: x-large;
+                height: 6%;
+                margin-bottom: 2%;
+                padding-left: 34%;
+            }
+            .scor{
+                border: 1px solid white;
+                width: 89%;
+                border-radius: 47%;
+                color: white;
+                background-color: blue;
+                font-size: x-large;
+                height: 6%;
+                margin-bottom: 2%;
+                padding-left: 37%;
+            }
+            .ne{
+                border: 1px solid white;
+                width: 18%;
+                border-radius: 47%;
+                height: 8%;
+                color: white;
+                background-color: blueviolet;
+                font-size: x-large;
+                margin-left: 16%;
+            }
+       </style>
+    </head>
+    <body  style="background-image: url('Questions.jpeg');">
+        <audio id="au" controls autoplay hidden>
+            <source src="option.mp3" type="audio/mpeg">
+          </audio>
+        <div style="width: 75%;float: left;">
+                <h2>13. What does Carpe Diem mean in Latin?</h2><br>
+                <input class="op" type="submit" onclick="check(this)" value="A)Enjoy the moment"><!--answer -->
+                <input class="op" style="margin-left: 15%;margin-bottom: 5%;" type="submit" onclick="check(this)" value="B)Have no fear"><br>
+                <input class="op" type="submit" onclick="check(this)" value="C)Sorry I blew it">
+                <input class="op" style="margin-left: 15%;" type="submit" onclick="check(this)" value="D)Hello"><br><br><br><br><br><br>
+                <input class="ne" type="submit" name="next" onclick="next()" value="Next">
+                <input class="ne" type="submit" name="quit" onclick="quit()" value="Quit">
+        </div>
+        <div style="width: 25%;float: right;">          
+            <input class="sc" id="7crore" type="text" value="7 Crores"><br>
+            <input class="sc" id="50m" type="text" value="50,00,000"><br>
+            <input class="sc" id="25m" type="text" value="25,00,000" style="background-color: green;"><br>
+            <input class="sc" id="12.50m" type="text" value="12,50,000" style="background-color: green;"><br>
+            <input class="sc" id="6.40m" type="text" value="6,40,000" style="background-color: green;"><br>
+            <input class="sc" id="6.40m" type="text" value="3,20,000" style="background-color: green;"><br>
+            <input class="sc" id="1.60m" type="text" value="1,60,000" style="background-color: green;"><br>
+            <input class="sco" id="80k" type="text" value="80,000" style="background-color: green;"><br>
+            <input class="sco" id="40k" type="text" value="40,000" style="background-color: green;"><br>
+            <input class="sco" id="20k" type="text" value="20,000" style="background-color: green;"><br>
+            <input class="sco" id="10k" type="text" value="10,000" style="background-color: green;"><br>
+            <input class="scor" id="5k" type="text" value="5000" style="background-color: green;"><br>
+            <input class="scor" id="2k" type="text" value="2000" style="background-color: green;"><br>
+            <input class="scor" id="1k" type="text" value="1000" style="background-color: green;"><br>
+        </div>
+    </body>
+    <script>
+        var result;
+        var score;
+        function check(name)
+        {
+            var myAudio = document.getElementById('au');
+            myAudio.play();
+            if(name.value=="A)Enjoy the moment"){
+                document.getElementById('50m').style.backgroundColor="green";
+                result=1;
+                localStorage.setItem('score','50,00,000');
+            }
+            else{
+                document.getElementById('50m').style.backgroundColor="red";
+                result=0;
+                localStorage.setItem('score','25,00,000');
+            }
+            
+        }
+        function next()
+        {
+            if(result==1){
+                window.location.href="fourteenthpage.html";
+            }
+            else{
+                window.location.href="finalpage.html";
+            }
+        }
+        function quit()
+        {
+            window.location.href="finalpage.html";
+        }
+    </script>
+</html>
